@@ -5,15 +5,18 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable"
+import { ResponsiveLine } from "@nivo/line";
 import { Tooltip } from 'react-tooltip'
+import { faker } from '@faker-js/faker';
+
 
 const Routes = [
   {
     l: "Go Home",
-    i: <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><defs><path id="solarHomeBold0" fill="currentColor" d="M10.75 9.5a1.25 1.25 0 1 1 2.5 0a1.25 1.25 0 0 1-2.5 0"></path></defs><path fill="currentColor" d="M18.5 3H16a.5.5 0 0 0-.5.5v.059l3.5 2.8V3.5a.5.5 0 0 0-.5-.5"></path><use href="#solarHomeBold0" fillRule="evenodd" clipRule="evenodd"></use><path fill="currentColor" fillRule="evenodd" d="m20.75 10.96l.782.626a.75.75 0 0 0 .936-1.172l-8.125-6.5a3.75 3.75 0 0 0-4.686 0l-8.125 6.5a.75.75 0 0 0 .937 1.172l.781-.626v10.29H2a.75.75 0 0 0 0 1.5h20a.75.75 0 0 0 0-1.5h-1.25zM9.25 9.5a2.75 2.75 0 1 1 5.5 0a2.75 2.75 0 0 1-5.5 0m2.8 3.75c.664 0 1.237 0 1.696.062c.492.066.963.215 1.345.597s.531.853.597 1.345c.058.43.062.96.062 1.573v4.423h-1.5V17c0-.728-.002-1.2-.048-1.546c-.044-.325-.114-.427-.172-.484c-.057-.057-.159-.128-.484-.172c-.347-.046-.818-.048-1.546-.048c-.728 0-1.2.002-1.546.048c-.325.044-.427.115-.484.172c-.057.057-.128.159-.172.484c-.046.347-.048.818-.048 1.546v4.25h-1.5v-4.3c0-.664 0-1.237.062-1.696c.066-.492.215-.963.597-1.345s.854-.531 1.345-.597c.459-.062 1.032-.062 1.697-.062z" clipRule="evenodd"></path><use href="#solarHomeBold0" fillRule="evenodd" clipRule="evenodd"></use></svg>
+    i: <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256"><path fill="currentColor" d="m221.56 100.85l-79.95-75.47l-.16-.15a19.93 19.93 0 0 0-26.91 0l-.17.15l-79.93 75.47a20.07 20.07 0 0 0-6.44 14.7V208a20 20 0 0 0 20 20h48a20 20 0 0 0 20-20v-44h24v44a20 20 0 0 0 20 20h48a20 20 0 0 0 20-20v-92.45a20.07 20.07 0 0 0-6.44-14.7M204 204h-40v-44a20 20 0 0 0-20-20h-32a20 20 0 0 0-20 20v44H52v-86.72l76-71.75l76 71.75Z"></path></svg>
   },
   {
-    i: <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m9.25 22l-.4-3.2q-.325-.125-.612-.3t-.563-.375L4.7 19.375l-2.75-4.75l2.575-1.95Q4.5 12.5 4.5 12.338v-.675q0-.163.025-.338L1.95 9.375l2.75-4.75l2.975 1.25q.275-.2.575-.375t.6-.3l.4-3.2h5.5l.4 3.2q.325.125.613.3t.562.375l2.975-1.25l2.75 4.75l-2.575 1.95q.025.175.025.338v.674q0 .163-.05.338l2.575 1.95l-2.75 4.75l-2.95-1.25q-.275.2-.575.375t-.6.3l-.4 3.2zm2.8-6.5q1.45 0 2.475-1.025T15.55 12q0-1.45-1.025-2.475T12.05 8.5q-1.475 0-2.488 1.025T8.55 12q0 1.45 1.013 2.475T12.05 15.5"></path></svg>,
+    i: <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024"><path fill="currentColor" d="M600.704 64a32 32 0 0 1 30.464 22.208l35.2 109.376c14.784 7.232 28.928 15.36 42.432 24.512l112.384-24.192a32 32 0 0 1 34.432 15.36L944.32 364.8a32 32 0 0 1-4.032 37.504l-77.12 85.12a357.12 357.12 0 0 1 0 49.024l77.12 85.248a32 32 0 0 1 4.032 37.504l-88.704 153.6a32 32 0 0 1-34.432 15.296L708.8 803.904c-13.44 9.088-27.648 17.28-42.368 24.512l-35.264 109.376A32 32 0 0 1 600.704 960H423.296a32 32 0 0 1-30.464-22.208L357.696 828.48a351.616 351.616 0 0 1-42.56-24.64l-112.32 24.256a32 32 0 0 1-34.432-15.36L79.68 659.2a32 32 0 0 1 4.032-37.504l77.12-85.248a357.12 357.12 0 0 1 0-48.896l-77.12-85.248A32 32 0 0 1 79.68 364.8l88.704-153.6a32 32 0 0 1 34.432-15.296l112.32 24.256c13.568-9.152 27.776-17.408 42.56-24.64l35.2-109.312A32 32 0 0 1 423.232 64H600.64zm-23.424 64H446.72l-36.352 113.088l-24.512 11.968a294.113 294.113 0 0 0-34.816 20.096l-22.656 15.36l-116.224-25.088l-65.28 113.152l79.68 88.192l-1.92 27.136a293.12 293.12 0 0 0 0 40.192l1.92 27.136l-79.808 88.192l65.344 113.152l116.224-25.024l22.656 15.296a294.113 294.113 0 0 0 34.816 20.096l24.512 11.968L446.72 896h130.688l36.48-113.152l24.448-11.904a288.282 288.282 0 0 0 34.752-20.096l22.592-15.296l116.288 25.024l65.28-113.152l-79.744-88.192l1.92-27.136a293.12 293.12 0 0 0 0-40.256l-1.92-27.136l79.808-88.128l-65.344-113.152l-116.288 24.96l-22.592-15.232a287.616 287.616 0 0 0-34.752-20.096l-24.448-11.904L577.344 128zM512 320a192 192 0 1 1 0 384a192 192 0 0 1 0-384m0 64a128 128 0 1 0 0 256a128 128 0 0 0 0-256"></path></svg>,
     l: "Settings"
   },
   {
@@ -22,11 +25,131 @@ const Routes = [
   },
 ]
 
+import React from 'react';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip as ChartTooltip,
+  Filler,
+  Legend,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  ChartTooltip,
+  Filler,
+  Legend
+);
+
+export const options = {
+  responsive: true,
+  scales: {
+    x: {
+      display: false,
+      beginAtZero: true,
+    },
+    y: {
+      display: false,
+      beginAtZero: true,
+    }
+  },
+  plugins: {
+    legend: {
+      position: 'top' as const,
+    },
+    title: {
+      display: true,
+      // text: 'Chart.js Line Chart',
+    },
+  },
+};
+
+const labels = [...Array(25)].map(i => {
+  return new Date(new Date().getTime() + 1000 * 60 * 60).toLocaleTimeString()
+});
+
+const MyResponsiveLine = ({ data /* see data tab */ }: any) => (
+  <ResponsiveLine
+    data={data}
+    margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+    xScale={{ type: 'point' }}
+    yScale={{
+      type: 'linear',
+      min: 'auto',
+      max: 'auto',
+      stacked: true,
+      reverse: false
+    }}
+    yFormat=" >-.2f"
+    axisTop={null}
+    axisRight={null}
+    axisBottom={{
+      tickSize: 5,
+      tickPadding: 5,
+      tickRotation: 0,
+      legend: 'transportation',
+      legendOffset: 36,
+      legendPosition: 'middle',
+      truncateTickAt: 0
+    }}
+    axisLeft={{
+      tickSize: 5,
+      tickPadding: 5,
+      tickRotation: 0,
+      legend: 'count',
+      legendOffset: -40,
+      legendPosition: 'middle',
+      truncateTickAt: 0
+    }}
+    pointSize={10}
+    pointColor={{ theme: 'background' }}
+    pointBorderWidth={2}
+    pointBorderColor={{ from: 'serieColor' }}
+    pointLabelYOffset={-12}
+    useMesh={true}
+    legends={[
+      {
+        anchor: 'bottom-right',
+        direction: 'column',
+        justify: false,
+        translateX: 100,
+        translateY: 0,
+        itemsSpacing: 0,
+        itemDirection: 'left-to-right',
+        itemWidth: 80,
+        itemHeight: 20,
+        itemOpacity: 0.75,
+        symbolSize: 12,
+        symbolShape: 'circle',
+        symbolBorderColor: 'rgba(0, 0, 0, .5)',
+        effects: [
+          {
+            on: 'hover',
+            style: {
+              itemBackground: 'rgba(0, 0, 0, .03)',
+              itemOpacity: 1
+            }
+          }
+        ]
+      }
+    ]}
+  />
+)
+
 export function ResizeableDashboard() {
   return (
     <ResizablePanelGroup
       direction="horizontal"
-      className="w-full h-full bg-crimson-900"
+      className="w-full h-full bg-crimson-50"
     >
       <ResizablePanel className="w-full"
         defaultSize={4}
@@ -43,12 +166,12 @@ export function ResizeableDashboard() {
                 data-tooltip-content={route.l}
                 data-tooltip-id={id}
               >
-                <span className="w-full h-full flex flex-wrap border border-crimson-900 justify-center items-center transition-all hover:text-white duration-300 rounded-md hover:bg-crimson-300 p-4 ">
+                <span className="w-full h-full flex flex-wrap border border-crimson-700 justify-center items-center transition-all text-crimson-800 hover:text-white duration-300 rounded-md hover:bg-crimson-800 p-4 ">
                   {route.i}
                 </span>
 
                 <Tooltip id={id} style={{
-                  background: `#4c353a`
+                  background: `#2c2c32`
                 }} />
               </div>
             })
@@ -56,27 +179,131 @@ export function ResizeableDashboard() {
         </div>
       </ResizablePanel>
 
-      <ResizableHandle className="bg-crimson-900" />
+      <ResizableHandle className="bg-crimson-700" />
 
       <ResizablePanel
         defaultSize={96}
       >
         <ResizablePanelGroup direction="vertical">
-          {/* <ResizablePanel defaultSize={6}>
-            <div className="flex h-full items-center justify-center p-6">
-              <span className="font-semibold">Two</span>
-            </div>
-          </ResizablePanel>
-
-          <ResizableHandle className="bg-crimson-300" /> */}
-
           <ResizablePanel defaultSize={75}>
-            <main>
-              {/* Everything goes here */}
+            <main className="w-full flex flex-wrap p-4">
+              <section className="grid 2xl:grid-cols-2 gap-4 h-full w-full">
+                <div className="w-full h-full">
+                  <MyResponsiveLine data={[{
+                    "id": "japan",
+                    "color": "hsl(305, 70%, 50%)",
+                    "data": [
+                      {
+                        "x": "plane",
+                        "y": 27
+                      },
+                      {
+                        "x": "helicopter",
+                        "y": 188
+                      },
+                      {
+                        "x": "boat",
+                        "y": 220
+                      },
+                      {
+                        "x": "train",
+                        "y": 274
+                      },
+                      {
+                        "x": "subway",
+                        "y": 265
+                      },
+                      {
+                        "x": "bus",
+                        "y": 53
+                      },
+                      {
+                        "x": "car",
+                        "y": 132
+                      },
+                      {
+                        "x": "moto",
+                        "y": 289
+                      },
+                      {
+                        "x": "bicycle",
+                        "y": 60
+                      },
+                      {
+                        "x": "horse",
+                        "y": 277
+                      },
+                      {
+                        "x": "skateboard",
+                        "y": 286
+                      },
+                      {
+                        "x": "others",
+                        "y": 227
+                      }
+                    ]
+                  },
+                  {
+                    "id": "france",
+                    "color": "hsl(277, 70%, 50%)",
+                    "data": [
+                      {
+                        "x": "plane",
+                        "y": 225
+                      },
+                      {
+                        "x": "helicopter",
+                        "y": 271
+                      },
+                      {
+                        "x": "boat",
+                        "y": 57
+                      },
+                      {
+                        "x": "train",
+                        "y": 296
+                      },
+                      {
+                        "x": "subway",
+                        "y": 16
+                      },
+                      {
+                        "x": "bus",
+                        "y": 287
+                      },
+                      {
+                        "x": "car",
+                        "y": 252
+                      },
+                      {
+                        "x": "moto",
+                        "y": 213
+                      },
+                      {
+                        "x": "bicycle",
+                        "y": 173
+                      },
+                      {
+                        "x": "horse",
+                        "y": 274
+                      },
+                      {
+                        "x": "skateboard",
+                        "y": 120
+                      },
+                      {
+                        "x": "others",
+                        "y": 138
+                      }
+                    ]
+                  },
+                  ]} />
+                </div>
+              </section>
             </main>
           </ResizablePanel>
         </ResizablePanelGroup>
-      </ResizablePanel >
-    </ResizablePanelGroup >
+      </ResizablePanel>
+    </ResizablePanelGroup>
   )
 }
