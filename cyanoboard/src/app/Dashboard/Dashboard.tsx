@@ -171,7 +171,8 @@ export function ResizeableDashboard() {
                 </span>
 
                 <Tooltip id={id} style={{
-                  background: `#2c2c32`
+                  background: `#2c2c32`,
+                  fillOpacity: 100,
                 }} />
               </div>
             })
