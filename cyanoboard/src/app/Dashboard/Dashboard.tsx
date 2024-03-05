@@ -84,7 +84,7 @@ const MyResponsiveLine = ({ data /* see data tab */ }: any) => (
     xScale={{ type: 'point' }}
     yScale={{
       type: 'linear',
-      min: 'auto',
+      min: "auto",
       max: 'auto',
       stacked: true,
       reverse: false
@@ -186,9 +186,9 @@ export function ResizeableDashboard() {
       >
         <ResizablePanelGroup direction="vertical">
           <ResizablePanel defaultSize={75}>
-            <main className="w-full flex flex-wrap p-4">
+            <main className="w-full flex flex-wrap p-4 h-full">
               <section className="grid 2xl:grid-cols-2 gap-4 h-full w-full">
-                <div className="w-full h-full">
+                <div className="w-full h-1/2">
                   <MyResponsiveLine data={[{
                     "id": "japan",
                     "color": "hsl(305, 70%, 50%)",
