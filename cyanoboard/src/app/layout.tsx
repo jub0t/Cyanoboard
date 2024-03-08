@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Ubuntu } from "next/font/google";
 import "./globals.css";
 import * as React from "react";
 
-const inter = Inter({ subsets: ["latin"] });
+const MainFont = Ubuntu({
+  subsets: ["latin-ext"],
+  weight: [
+    "300",
+    "400",
+    "700",
+    "500"
+  ]
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} text-white`}>
+      <body className={`${MainFont.className} text-white`}>
         {children}
       </body>
     </html>

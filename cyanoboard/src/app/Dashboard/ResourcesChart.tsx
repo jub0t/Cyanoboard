@@ -47,8 +47,6 @@ const data = [
 ];
 
 export default class ResourcesChart extends PureComponent {
-    static demoUrl = 'https://codesandbox.io/s/simple-line-chart-kec3v';
-
     render() {
         return (
             <ResponsiveContainer width="100%" height="100%">
